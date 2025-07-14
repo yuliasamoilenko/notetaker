@@ -1,0 +1,29 @@
+
+
+.wrap{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+}
+
+.left {
+width: 20%;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.centre {
+width: 30%;
+  border: 1px solid black;
+  border-right: 0px;
+  border-left: 0px;
+  box-sizing: border-box;
+}
+
+.right {
+width: 50%;
+  border: 1px solid black;
+  box-sizing: border-box;
+
+}
