@@ -6,7 +6,7 @@
 }
 
 .mini-border {
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   padding: 16px;
   margin-bottom: 10px;
   font-weight: bold;
@@ -35,7 +35,7 @@
 }
 
 .textarea-wrapper {
-  border-top: 1px solid black;
+  border-top: 2px solid black;
   padding: 8px;
   margin-top: 12px;
   box-sizing: border-box;
@@ -51,4 +51,9 @@ textarea {
   outline: none;
   font-size: 14px;
   box-sizing: border-box;
+}
+
+.text-notes-bold{
+    font-weight: bold;
+    font-size: 20px;
 }

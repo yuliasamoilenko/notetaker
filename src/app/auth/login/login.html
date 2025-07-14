@@ -1,4 +1,18 @@
-<div class="wrapper">
-    <h1>Forms Ezample</h1>
+<div class="login-wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <h2>Вхід</h2>
 
+    <div class="form-group">
+      <label for="username">Логін</label>
+      <input type="text" id="username" formControlName="username" placeholder="Введіть логін">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Пароль</label>
+      <input type="password" id="password" formControlName="password" placeholder="Введіть пароль">
+    </div>
+
+    <button type="submit">Увійти</button>
+  </form>
 </div>
+

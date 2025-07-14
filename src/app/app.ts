@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { DashboardComponent } from './dashboard/components/dashboard/dashboard';
+import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  imports: [DashboardComponent],
+  imports: [DashboardComponent, RouterModule, ReactiveFormsModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
