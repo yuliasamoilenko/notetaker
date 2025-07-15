@@ -25,6 +25,7 @@ export class LoginComponent {
       // Перевірка логіну/пароля
       const { username, password } = this.loginForm.value;
       if (username === 'admin' && password === '1234') {
+        localStorage.setItem('token','1234567')
         this.router.navigate(['/dashboard']);
       } else {
         alert('Невірний логін або пароль');
