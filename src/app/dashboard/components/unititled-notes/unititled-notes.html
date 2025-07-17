@@ -1,5 +1,25 @@
-<p class="mini-border">Untitled note</p>
+<p class="mini-border">Unititled notes</p>
 
 <div class="big-border">
-  <p style="color: gray; text-align: center;">Add your text</p>
+  <label for="title">Тема:</label>
+  <input
+    id="title"
+    type="text"
+    [(ngModel)]="title"
+    placeholder="Введіть тему нотатки..."
+  />
+
+  <label for="content">Текст нотатки:</label>
+  <textarea
+    id="content"
+    [(ngModel)]="content"
+    placeholder="Введіть текст..."
+  ></textarea>
+
+  <button (click)="saveNote()">Зберегти нотатку</button>
+  <p *ngIf="savedMessage" class="save-success">
+  {{ savedMessage }}
+</p>
+
 </div>
+

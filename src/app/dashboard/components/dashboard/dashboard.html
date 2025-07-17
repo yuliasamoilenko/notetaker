@@ -1,8 +1,25 @@
 <div class="wrap">
-    <app-notes class="left"></app-notes>
-    <app-unititled-notes class="centre"></app-unititled-notes>
-    <app-chat class="right"></app-chat>
+  <app-notes
+    class="left"
+    [notes]="notes"
+    (editNote)="onEditNote($event)"
+    (deleteNote)="onDeleteNote($event)"
+  ></app-notes>
+
+  <app-unititled-notes
+    class="centre"
+    [draft]="draftContent"
+    [editingNote]="editingNote"
+    (noteSaved)="onNoteSaved()"
+  ></app-unititled-notes>
+
+  <app-chat
+    class="right"
+    (editNote)="startDrafting($event)"
+  ></app-chat>
 </div>
+
+
 
 
 

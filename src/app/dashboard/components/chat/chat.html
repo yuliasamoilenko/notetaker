@@ -1,21 +1,17 @@
 <p class="mini-border">Chat</p>
-
 <div class="chat-container">
-  <div class="big-border">
-    <p class="text-notes-bold">Ask about this note</p>
-    <button (click)="sendToAI()" [disabled]="isLoading">
-      {{ isLoading ? 'Завантаження...' : 'Summarize this note' }}
-    </button>
-    <div *ngIf="aiResponse" class="response">
-      <p><strong>Результат:</strong></p>
-      <p>{{ aiResponse }}</p>
-    </div>
+  <div
+    *ngFor="let msg of messages"
+    class="message"
+    [ngClass]="{'user': msg.isUser, 'ai': !msg.isUser}"
+    (click)="!msg.isUser && onAiMessageClick(msg.text)"
+    style="cursor: pointer;"
+  >
+    <div class="message-content">{{ msg.text }}</div>
   </div>
+</div>
 
-  <div class="textarea-wrapper">
-    <textarea
-      [(ngModel)]="userMessage"
-      placeholder="Встав сюди текст лекції"
-    ></textarea>
-  </div>
+<div class="input-area">
+  <textarea [(ngModel)]="userMessage" placeholder="Введіть повідомлення..."></textarea>
+  <button (click)="sendMessage()" [disabled]="isLoading || !userMessage.trim()">Надіслати</button>
 </div>

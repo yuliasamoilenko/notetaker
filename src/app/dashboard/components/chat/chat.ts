@@ -1,37 +1,51 @@
-import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { OpenaAiService } from '../../../../.././services/openai.service';
+import { FormsModule } from '@angular/forms';
+import { OpenaAiService } from '../../../../../services/openai.service';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './chat.html',
   styleUrls: ['./chat.scss']
 })
 export class Chat {
   userMessage: string = '';
-  aiResponse: string = '';
   isLoading: boolean = false;
+
+  messages: { text: string; isUser: boolean }[] = [];
+
+  @Output() editNote = new EventEmitter<string>();
 
   constructor(private openaiService: OpenaAiService) {}
 
-  sendToAI() {
+  sendMessage() {
     if (!this.userMessage.trim()) return;
 
+    this.messages.push({ text: this.userMessage, isUser: true });
+
     this.isLoading = true;
+
     this.openaiService.summarize(this.userMessage).subscribe({
       next: (response) => {
-        this.aiResponse = response.choices[0].message.content;
+        const aiText = response.choices[0].message.content;
+        this.messages.push({ text: aiText, isUser: false });
         this.isLoading = false;
+        this.userMessage = '';
       },
       error: (err) => {
         console.error('Помилка запиту:', err.error || err.message || err);
-        this.aiResponse = 'Виникла помилка. Спробуйте ще раз.';
+        this.messages.push({
+          text: 'Виникла помилка. Спробуйте ще раз.',
+          isUser: false
+        });
         this.isLoading = false;
       }
     });
+  }
+
+  onAiMessageClick(text: string) {
+    this.editNote.emit(text);
   }
 }

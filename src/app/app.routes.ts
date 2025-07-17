@@ -6,5 +6,11 @@ import { AuthGuard } from './auth.guard';
 export const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      {
+    path: 'new-note',
+    loadComponent: () =>
+      import('./dashboard/components/unititled-notes/unititled-notes').then(m => m.UnititledNotes),
+    canActivate: [AuthGuard]
+  },
     { path: '**', redirectTo: ''}
 ];
