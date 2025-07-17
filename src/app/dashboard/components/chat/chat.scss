@@ -12,6 +12,14 @@
   font-weight: bold;
 }
 
+button {
+  width: 200px;
+  height: 32px;
+  display: block;
+  margin: 0 auto;
+  background-color: azure;
+}
+
 .chat-container {
   display: flex;
   flex-direction: column;
@@ -29,8 +37,7 @@
   flex-direction: column;
   gap: 12px;
   box-sizing: border-box;
- 
-    text-align: center;
+  text-align: center;
  justify-content: center
 }
 

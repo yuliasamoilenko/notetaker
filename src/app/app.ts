@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Chat } from './dashboard/components/chat/chat';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
-  imports: [DashboardComponent, RouterModule, ReactiveFormsModule],
+  imports: [DashboardComponent, HttpClientModule, RouterModule, ReactiveFormsModule, FormsModule, Chat],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

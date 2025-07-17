@@ -3,12 +3,19 @@
 <div class="chat-container">
   <div class="big-border">
     <p class="text-notes-bold">Ask about this note</p>
-    <button>Summarize this note</button>
-    <button>Custom action 1</button>
-    <button>Custom action 2</button>
+    <button (click)="sendToAI()" [disabled]="isLoading">
+      {{ isLoading ? 'Завантаження...' : 'Summarize this note' }}
+    </button>
+    <div *ngIf="aiResponse" class="response">
+      <p><strong>Результат:</strong></p>
+      <p>{{ aiResponse }}</p>
+    </div>
   </div>
 
   <div class="textarea-wrapper">
-    <textarea placeholder="Message to your AI"></textarea>
+    <textarea
+      [(ngModel)]="userMessage"
+      placeholder="Встав сюди текст лекції"
+    ></textarea>
   </div>
 </div>
